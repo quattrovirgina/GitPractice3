@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengram3.feed.FeedSelMapper">
+    <select id="insFeedSel">
+        SELECT A.ifeed, A.contents, A.location, A.created_at AS createdAt,
+        A.iuser AS writerIuser, B.nm AS writerNm, B.pic AS writerPic FROM t_feed A
+        JOIN t_user B ON A.iuser = B.iuser
+        LIMIT #{startIdx}, #{finishIdx}
+    </select>
+</mapper>

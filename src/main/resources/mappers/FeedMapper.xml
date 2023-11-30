@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengram3.feed.FeedMapper">
+    <insert id="insFeed" useGeneratedKeys="true" keyProperty="ifeed">
+        INSERT INTO t_feed (iuser, contents, location)
+        VALUES(#{iuser}, #{contents}, #{location})
+        <!-- SET iuser = #{iuser}, contents = #{contents}, location = #{location} -->
+    </insert>
+</mapper>
