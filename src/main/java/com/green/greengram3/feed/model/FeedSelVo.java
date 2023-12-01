@@ -1,12 +1,12 @@
 package com.green.greengram3.feed.model;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
-@Builder
 
 public class FeedSelVo {
     private int ifeed;
@@ -16,4 +16,9 @@ public class FeedSelVo {
     private int writerIuser;
     private String writerNm;
     private String writerPic;
+    private List<String> pics;
+    private int isFav; // isFav = 1 좋아요. isFav = 0 좋아요 아님
+    private List<FeedCommentSelVo> comments;
+    // 이름: comments
+    private int isMoreComment; // 0: 댓글 X, 1: 댓글 더있음
 }
