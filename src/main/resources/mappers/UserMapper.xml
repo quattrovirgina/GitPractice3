@@ -28,5 +28,15 @@
         WHERE uid = #{uid}
     </select>
 
+    <insert id="InsFollow">
+        INSERT INTO t_user_follow
+        SET from_iuser = #{fromIuser}, to_iuser = #{toIuser}
+    </insert>
+
+    <delete id="DelFollow">
+        DELETE FROM t_user_follow
+        WHERE from_iuser = #{fromIuser} AND to_iuser = #{toIuser}
+    </delete>
+
 
 </mapper>

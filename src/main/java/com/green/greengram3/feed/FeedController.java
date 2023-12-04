@@ -2,10 +2,7 @@ package com.green.greengram3.feed;
 
 import com.green.greengram3.common.Const;
 import com.green.greengram3.common.ResVo;
-import com.green.greengram3.feed.model.FeedFavDto;
-import com.green.greengram3.feed.model.FeedInsDto;
-import com.green.greengram3.feed.model.FeedSelDto;
-import com.green.greengram3.feed.model.FeedSelVo;
+import com.green.greengram3.feed.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -49,6 +46,13 @@ public class FeedController {
     public ResVo toggleFeedFav(FeedFavDto dto) {
         log.info("dto : {}", dto);
         return service.toggleFeedFav(dto);
+    }
+
+    // ifeed, iuser를 체크함으로써 feed를 삭제한다
+    @DeleteMapping
+    public ResVo delFeed(FeedDelDto dto) {
+        log.info("delete result : {} ", dto);
+        return service.DelFeed(dto);
     }
 }
 

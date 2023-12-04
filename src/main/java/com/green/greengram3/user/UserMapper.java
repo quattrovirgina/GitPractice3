@@ -13,4 +13,12 @@ public interface UserMapper {
     String selUserById(String uid);
 
     UserSigninVo selUserSignin(UserSigninDto dto);
+
+    int InsFollow(UserFollowDto dto);
+
+    int DelFollow(UserFollowDto dto);
+
+
+
+
 }

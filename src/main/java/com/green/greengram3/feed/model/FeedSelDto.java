@@ -13,6 +13,10 @@ public class FeedSelDto {
     private int page;
     private int loginedIuser;
 
+    private int targetIuser;
+
+    private int isFavList; // 안보내면 default 값인 0, 보내면 1
+
     @JsonIgnore
     private int startIdx;
     @JsonIgnore

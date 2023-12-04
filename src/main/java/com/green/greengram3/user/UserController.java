@@ -34,5 +34,13 @@ public class UserController {
             return service.signin(dto);
     }
     // pk, 이름, 프로필사진
+
+    //
+    @PostMapping("/follow")
+    public ResVo toggleFollow(@RequestBody UserFollowDto dto) {
+        log.info("dto: {}", dto);
+        return service.toggleFollow(dto);
+
+    }
 }
 

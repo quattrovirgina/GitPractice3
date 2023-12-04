@@ -1,5 +1,6 @@
 package com.green.greengram3.user;
 
+import com.green.greengram3.common.Const;
 import com.green.greengram3.common.ResVo;
 import com.green.greengram3.user.model.UserSigninDto;
 import com.green.greengram3.user.model.UserSigninVo;
@@ -57,5 +58,15 @@ public class UserService {
         vo = mapper.selUserSignin(dto);
         vo.setResult(1);
         return vo;
+    }
+
+    public ResVo toggleFollow(UserFollowDto dto) {
+        int result = mapper.DelFollow(dto);
+
+        if(result == 0) {
+            mapper.InsFollow(dto);
+            return new ResVo(Const.SUCCESS);
+        }
+        return new ResVo(Const.FAILED);
     }
 }

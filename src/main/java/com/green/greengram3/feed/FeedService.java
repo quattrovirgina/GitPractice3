@@ -76,5 +76,26 @@ public class FeedService {
       // return new ResVo(0);
    }
 
+   public ResVo DelFeed(FeedDelDto dto) {
+      int result = mapper.selectiuser(dto.getIfeed());
+      if(result == dto.getIuser()) {
+         Commentmapper.delFeedComment(dto);
+         Favmapper.DelFav(dto);
+         Picsmapper.DelFeedPics(dto);
+         mapper.DelFeed(dto);
+
+         return new ResVo(Const.SUCCESS);
+      }
+
+      return new ResVo(Const.FAILED);
+   }
+
    // feedfav인 경우 0과 1의 이진법의 toggle 이므로 삭제를 우선으로 해볼것
+   // int AffectedRows = picsMapper.delFeedPics(dto);
+   // if(picsAffectedRows == 0) {
+   //
+   //    return new ResVo(0);
+   //    int favAffectedRows = favMapper.delFeedFavAll(dto);
+   //    int CommentAffectedRows = CommentMapper.delFeedComment(dto);
+   // }
 }

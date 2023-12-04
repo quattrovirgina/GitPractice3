@@ -11,7 +11,4 @@ public class FeedCommentSelVo {
     private String writerNm;
     private String writerPic;
     private String createdAt;
-
-
-
 }
