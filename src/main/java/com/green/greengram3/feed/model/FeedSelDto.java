@@ -2,6 +2,7 @@ package com.green.greengram3.feed.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.green.greengram3.common.Const;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -10,9 +11,12 @@ import lombok.Setter;
 @Data
 
 public class FeedSelDto {
+    @Schema(title = "페이지", defaultValue = "1")
     private int page;
+
     private int loginedIuser;
 
+    @Schema(title = "프로필 주인 pk")
     private int targetIuser;
 
     private int isFavList; // 안보내면 default 값인 0, 보내면 1

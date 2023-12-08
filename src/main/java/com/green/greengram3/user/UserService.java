@@ -2,10 +2,7 @@ package com.green.greengram3.user;
 
 import com.green.greengram3.common.Const;
 import com.green.greengram3.common.ResVo;
-import com.green.greengram3.user.model.UserSigninDto;
-import com.green.greengram3.user.model.UserSigninVo;
-import com.green.greengram3.user.model.UserSignupDto;
-import com.green.greengram3.user.model.UserSignupProcDto;
+import com.green.greengram3.user.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.mindrot.jbcrypt.BCrypt;
@@ -43,30 +40,35 @@ public class UserService {
     }
 
     public UserSigninVo signin(UserSigninDto dto) {
-        String savedpw = mapper.selUserById(dto.getUid());
-        UserSigninVo vo = new UserSigninVo();
+        UserSelDto vo = new UserSelDto();
+        vo.setUid(dto.getUid());
 
-        if(savedpw == null) {
-            vo.setResult(2);
-            return vo;
+        UserEntity entity = mapper.selUser(vo);
+        if (entity == null) {
+            return UserSigninVo.builder().result(Const.LOGIN_NO_UID).build();
+        } else if (!BCrypt.checkpw(dto.getUpw(), entity.getUpw())) {
+            return UserSigninVo.builder().result(Const.LOGIN_DIFF_UPW).build();
         }
 
-        if(!BCrypt.checkpw(dto.getUpw(), savedpw)) {
-            vo.setResult(3);
-            return vo;
-        }
-        vo = mapper.selUserSignin(dto);
-        vo.setResult(1);
-        return vo;
+        return UserSigninVo.builder()
+                .result(Const.SUCCESS)
+                .iuser(entity.getIuser())
+                .nm(entity.getNm())
+                .pic(entity.getPic())
+                .build();
+    }
+
+    public UserInfoVo getUserInfo(UserInfoSelDto dto) {
+        return mapper.SelUserInfo(dto);
     }
 
     public ResVo toggleFollow(UserFollowDto dto) {
-        int result = mapper.DelFollow(dto);
-
-        if(result == 0) {
-            mapper.InsFollow(dto);
-            return new ResVo(Const.SUCCESS);
+        int delAffectedRows = mapper.DelFollow(dto);
+        if(delAffectedRows == 1) {
+            return new ResVo(Const.FAILED);
         }
-        return new ResVo(Const.FAILED);
+        int insAffectedRows = mapper.InsFollow(dto);
+        return new ResVo(Const.SUCCESS);
     }
+
 }

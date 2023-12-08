@@ -36,7 +36,6 @@ public class FeedService {
       fcDto.setStartIdx(0);
       fcDto.setRowCount(4);
       // 여기서부터
-      log.info("list : {}", list);
       for (FeedSelVo fe: list) { // 향상된포문: FeedSelVo를 담고있는 fe는 위의 list에 대하여
          fe.setPics(Picsmapper.SelFeedPics(fe.getIfeed()));
          // fe.setPics(5번방의 사진데이터);
