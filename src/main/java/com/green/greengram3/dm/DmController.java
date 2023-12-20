@@ -1,10 +1,7 @@
 package com.green.greengram3.dm;
 
 import com.green.greengram3.common.ResVo;
-import com.green.greengram3.dm.model.DmMsgInsDto;
-import com.green.greengram3.dm.model.DmSelDto;
-import com.green.greengram3.dm.model.DmMsgSelVo;
-import com.green.greengram3.dm.model.DmSelVo;
+import com.green.greengram3.dm.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +22,7 @@ public class DmController {
         return service.getDmAll(dto);
     }
     @GetMapping("/msg")
-    public List<DmMsgSelVo> getMsgAll(DmSelDto dto) {
+    public List<DmMsgSelVo> getMsgAll(DmMsgSelDto dto) {
         log.info("dto : {}", dto);
         return service.getMsgAll(dto);
 
@@ -33,5 +30,10 @@ public class DmController {
     @PostMapping("/msg")
     public ResVo postDmMsg(@RequestBody DmMsgInsDto dto) {
         return service.postDmMsg(dto);
+    }
+
+    @DeleteMapping("/msg")
+    public ResVo delDmMsg(DmMsgDelDto dto) {
+        return service.delDmMsg(dto);
     }
 }

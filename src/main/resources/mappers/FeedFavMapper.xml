@@ -23,6 +23,23 @@
     </delete>
     <!-- 해당 유저의 특정 ifeed의 좋아요를 삭제하는 delete문 -->
 
+    <select id="selFeedFavForTest">
+        select ifeed, iuser
+        FROM t_feed_fav
+        WHERE ifeed = #{ifeed}
+        <if test="iuser > 0">
+            AND iuser = #{iuser}
+        </if>
+    </select>
+
+    <delete id="DelFeedFavAll">
+        DELETE FROM t_feed_fav
+        WHERE ifeed = #{ifeed}
+        <if test="iuser != 0">
+            AND iuser = #{iuser}
+        </if>
+    </delete>
+
 
 </mapper>
 

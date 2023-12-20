@@ -28,4 +28,6 @@ public interface FeedMapper {
     // DelFeed라는 아이디를 가진 쿼리에 해당하는 int 선언문
     // FeedDelDto 형태의 dto를 파라미터로 하여
     // 쿼리에서 지정한 ifeed를 삭제할것
+
+
 }

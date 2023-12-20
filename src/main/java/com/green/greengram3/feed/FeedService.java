@@ -26,6 +26,8 @@ public class FeedService {
 
       int feedPicsAffectedRows = Picsmapper.insFeedPics(dto);
 
+      log.info("FeedPicsAffectedRows: {}", feedPicsAffectedRows);
+
       return new ResVo(dto.getIfeed());
    }
 

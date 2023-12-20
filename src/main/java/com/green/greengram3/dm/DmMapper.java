@@ -19,4 +19,6 @@ public interface DmMapper {
     List<DmSelVo> selDmAll(DmSelDto dto);
     // --------------------------------------\
     List <DmMsgSelVo> selDmMsgAll(DmMsgSelDto dto);
+
+    int delDmMsg(DmMsgDelDto dto);
 }

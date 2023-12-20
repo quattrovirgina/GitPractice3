@@ -4,6 +4,8 @@ import com.green.greengram3.feed.model.FeedDelDto;
 import com.green.greengram3.feed.model.FeedFavDto;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface FeedFavMapper {
     int insFeedFav(FeedFavDto dto);
@@ -11,5 +13,10 @@ public interface FeedFavMapper {
 
     int DelFav(FeedDelDto dto);
     // int delFeedFavAll(FeedDelDto dto);
+
+    List<FeedFavDto> selFeedFavForTest(FeedFavDto dto);
+
+    int delFeedFavAllTest(FeedDelDto dto);
+
 
 }

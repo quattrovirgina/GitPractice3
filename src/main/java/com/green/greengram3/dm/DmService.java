@@ -1,10 +1,7 @@
 package com.green.greengram3.dm;
 
 import com.green.greengram3.common.ResVo;
-import com.green.greengram3.dm.model.DmMsgInsDto;
-import com.green.greengram3.dm.model.DmSelDto;
-import com.green.greengram3.dm.model.DmMsgSelVo;
-import com.green.greengram3.dm.model.DmSelVo;
+import com.green.greengram3.dm.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,13 +18,17 @@ public class DmService {
     public List<DmSelVo> getDmAll(DmSelDto dto) {
         return dmMapper.selDmAll(dto);
     }
-    public List<DmMsgSelVo> getMsgAll(DmSelDto dto) {
+    public List<DmMsgSelVo> getMsgAll(DmMsgSelDto dto) {
 
         return dmMapper.selDmMsgAll(dto);
     }
 
     public ResVo postDmMsg(DmMsgInsDto dto) {
         return new ResVo(dmMapper.insDmMsg(dto));
+    }
+
+    public ResVo delDmMsg(DmMsgDelDto dto) {
+        return new ResVo(dmMapper.delDmMsg(dto));
     }
 
 }
