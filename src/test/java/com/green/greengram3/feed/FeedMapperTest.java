@@ -1,5 +1,7 @@
 package com.green.greengram3.feed;
 
+import com.green.greengram3.feed.model.FeedCommentInsDto;
+import com.green.greengram3.feed.model.FeedCommentSelDto;
 import com.green.greengram3.feed.model.FeedDelDto;
 import com.green.greengram3.feed.model.FeedFavDto;
 import org.junit.jupiter.api.Test;
@@ -58,7 +60,5 @@ public class FeedMapperTest {
 
         List<FeedFavDto> selList2 = mapper.selFeedFavForTest(dto);
         assertEquals(0, selList2.size());
-
-
     }
 }

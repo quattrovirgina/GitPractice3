@@ -31,9 +31,10 @@ public class FeedService {
       return new ResVo(dto.getIfeed());
    }
 
-   public List<FeedSelVo> gfeed(FeedSelDto dto) {
+   public List<FeedSelVo> getFeedAll(FeedSelDto dto) {
       log.info("dto: {}", dto);
       List<FeedSelVo> list = mapper.selFeedAll(dto);
+      log.info("beforeresult: {}", list);
       FeedCommentSelDto fcDto = new FeedCommentSelDto();
       fcDto.setStartIdx(0);
       fcDto.setRowCount(4);
@@ -50,6 +51,7 @@ public class FeedService {
          // fcDto 내에서는 fe내에 있는 Ifeed
          List<FeedCommentSelVo> comments = Commentmapper.selFeedCommentAll(fcDto);
          // FeedCommentSelVo를 담고있는 List형태의 comments는
+         fe.setComments(comments);
          if(comments.size() == 4) {
             fe.setIsMoreComment(1);
             comments.remove(comments.size() - 1);
@@ -57,6 +59,7 @@ public class FeedService {
          fe.setComments(comments);
          // 여기까지가 페이징 기법
       }
+      log.info("afterresult: {}", list);
       return list;
    }
 

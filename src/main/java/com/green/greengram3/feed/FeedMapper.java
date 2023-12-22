@@ -30,4 +30,5 @@ public interface FeedMapper {
     // 쿼리에서 지정한 ifeed를 삭제할것
 
 
+
 }

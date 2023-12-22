@@ -2,11 +2,13 @@ package com.green.greengram3.feed.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 
 public class FeedSelVo {
     private int ifeed;
